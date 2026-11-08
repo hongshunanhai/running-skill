@@ -1,0 +1,12 @@
+{
+  "name": "running-coach-marketplace",
+  "interface": {"displayName": "跑步教练"},
+  "plugins": [
+    {
+      "name": "running-coach",
+      "source": {"source": "local", "path": "./plugins/running-coach"},
+      "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
+      "category": "Productivity"
+    }
+  ]
+}

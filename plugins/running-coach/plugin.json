@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "running-coach",
+  "version": "0.1.0",
+  "description": "用 Garmin 和 RQrun 数据生成跑步报告和训练建议。",
+  "extensions": {
+    "com.openai": {
+      "requires_local_executor": true,
+      "onboardingSkill": "./skills/running-coach/SKILL.md",
+      "interface": {
+        "displayName": "跑步教练",
+        "shortDescription": "把跑步数据变成直观的训练报告",
+        "longDescription": "连接 Garmin 和 RQrun，制作跑步图表，回顾训练与恢复。",
+        "category": "Productivity",
+        "defaultPrompt": ["帮我连接 Garmin 和 RQrun，生成本周跑步报告。"]
+      }
+    }
+  }
+}
