@@ -15,7 +15,7 @@ with tempfile.TemporaryDirectory() as tmp:
     subprocess.run([sys.executable, str(root / 'scripts/render_report.py'), str(source), str(output)], check=True)
     tree = ElementTree.parse(output)
     text = ''.join(tree.getroot().itertext())
-    assert '32.4' in text and '暂无数据' in text and '恢复 < 训练 & 休息' in text
+    assert '32.4' in text and '—' in text and '恢复 < 训练 & 休息' in text
     data['insight'] = '注意恢复' * 30
     source.write_text(json.dumps(data, ensure_ascii=False))
     subprocess.run([sys.executable, str(root / 'scripts/render_report.py'), str(source), str(output)], check=True)

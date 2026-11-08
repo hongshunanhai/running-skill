@@ -17,26 +17,29 @@
 <text x="70" y="560" font-size="32" font-weight="700">跑量分布</text>
 <text x="70" y="600" class="muted small">公里 / 每个时间段</text>
 <line x1="90" y1="980" x2="990" y2="980" stroke="#627d7f" stroke-width="2"/>
-<rect x="100.0" y="864.0" width="60.0" height="116.0" rx="8" fill="#65e5c0"/>
-<text x="100.0" y="844.0" class="muted" font-size="18">5.2</text>
-<text x="100.0" y="1020" class="muted" font-size="18">周一</text>
-<text x="225.7" y="950.0" class="muted" font-size="18">暂无数据</text>
-<text x="225.7" y="1020" class="muted" font-size="18">周二</text>
-<rect x="351.4" y="801.5" width="60.0" height="178.5" rx="8" fill="#65e5c0"/>
-<text x="351.4" y="781.5" class="muted" font-size="18">8</text>
-<text x="351.4" y="1020" class="muted" font-size="18">周三</text>
-<rect x="477.1" y="980.0" width="60.0" height="0.0" rx="8" fill="#65e5c0"/>
-<text x="477.1" y="950.0" class="muted" font-size="18">0</text>
-<text x="477.1" y="1020" class="muted" font-size="18">周四</text>
-<rect x="602.9" y="841.7" width="60.0" height="138.3" rx="8" fill="#65e5c0"/>
-<text x="602.9" y="821.7" class="muted" font-size="18">6.2</text>
-<text x="602.9" y="1020" class="muted" font-size="18">周五</text>
-<rect x="728.6" y="980.0" width="60.0" height="0.0" rx="8" fill="#65e5c0"/>
-<text x="728.6" y="950.0" class="muted" font-size="18">0</text>
-<text x="728.6" y="1020" class="muted" font-size="18">周六</text>
-<rect x="854.3" y="690.0" width="60.0" height="290.0" rx="8" fill="#65e5c0"/>
-<text x="854.3" y="670.0" class="muted" font-size="18">13</text>
-<text x="854.3" y="1020" class="muted" font-size="18">周日</text>
+<line x1="90" y1="884" x2="990" y2="884" stroke="#2a4a5c" stroke-width="1" stroke-dasharray="4 10"/>
+<line x1="90" y1="789" x2="990" y2="789" stroke="#2a4a5c" stroke-width="1" stroke-dasharray="4 10"/>
+<line x1="90" y1="690" x2="990" y2="690" stroke="#2a4a5c" stroke-width="1" stroke-dasharray="4 10"/>
+<rect x="130.9" y="864.0" width="64.0" height="116.0" rx="8" fill="#65e5c0"/>
+<text x="162.9" y="852.0" class="muted" font-size="18" text-anchor="middle">5.2</text>
+<text x="162.9" y="1020" class="muted" font-size="18" text-anchor="middle">周一</text>
+<text x="288.6" y="966.0" class="muted" font-size="18" text-anchor="middle">—</text>
+<text x="288.6" y="1020" class="muted" font-size="18" text-anchor="middle">周二</text>
+<rect x="382.3" y="801.5" width="64.0" height="178.5" rx="8" fill="#65e5c0"/>
+<text x="414.3" y="789.5" class="muted" font-size="18" text-anchor="middle">8</text>
+<text x="414.3" y="1020" class="muted" font-size="18" text-anchor="middle">周三</text>
+<rect x="508.0" y="980.0" width="64.0" height="0.0" rx="8" fill="#65e5c0"/>
+<text x="540.0" y="966.0" class="muted" font-size="18" text-anchor="middle">0</text>
+<text x="540.0" y="1020" class="muted" font-size="18" text-anchor="middle">周四</text>
+<rect x="633.7" y="841.7" width="64.0" height="138.3" rx="8" fill="#65e5c0"/>
+<text x="665.7" y="829.7" class="muted" font-size="18" text-anchor="middle">6.2</text>
+<text x="665.7" y="1020" class="muted" font-size="18" text-anchor="middle">周五</text>
+<rect x="759.4" y="980.0" width="64.0" height="0.0" rx="8" fill="#65e5c0"/>
+<text x="791.4" y="966.0" class="muted" font-size="18" text-anchor="middle">0</text>
+<text x="791.4" y="1020" class="muted" font-size="18" text-anchor="middle">周六</text>
+<rect x="885.1" y="690.0" width="64.0" height="290.0" rx="8" fill="#f6c453"/>
+<text x="917.1" y="678.0" class="muted" font-size="18" text-anchor="middle">13</text>
+<text x="917.1" y="1020" class="muted" font-size="18" text-anchor="middle">周日</text>
 <rect x="60" y="1080" width="960" height="150" rx="24" fill="#173342"/>
 <text x="90" y="1130" fill="#65e5c0" font-size="22">训练提示</text>
 <text x="90" y="1170" font-size="24"><tspan x="90" dy="0">本周完成 4 次训练，留意长距离后的恢复。</tspan></text>

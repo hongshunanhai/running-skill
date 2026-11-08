@@ -60,17 +60,24 @@ def render(data):
                 '<text x="70" y="600" class="muted small">公里 / 每个时间段</text>',
                 '<line x1="90" y1="980" x2="990" y2="980" stroke="#627d7f" stroke-width="2"/>'])
     if not daily:
-        out.append('<text x="450" y="800" class="muted small">暂无数据</text>')
+        out.append('<text x="540" y="800" class="muted small" text-anchor="middle">暂无数据</text>')
+    for fraction in (.33, .66, 1.0):
+        grid_y = 980 - 290 * fraction
+        out.append(f'<line x1="90" y1="{grid_y:.0f}" x2="990" y2="{grid_y:.0f}" stroke="#2a4a5c" stroke-width="1" stroke-dasharray="4 10"/>')
+    peak = max([v for v in vals if v] or [0])
     for i, (item, value) in enumerate(zip(daily, vals)):
-        width = 880 / max(len(daily), 1)
-        x = 100 + i * width
-        bar = min(60, width * .55)
+        slot = 880 / max(len(daily), 1)
+        bar = min(64, slot * .55)
+        x = 100 + i * slot + (slot - bar) / 2
+        center = x + bar / 2
         height = 290 * value / maximum if value is not None else 0
+        color = '#f6c453' if value == peak and value else '#65e5c0'
         if value is not None:
-            out.append(f'<rect x="{x:.1f}" y="{980-height:.1f}" width="{bar:.1f}" height="{height:.1f}" rx="8" fill="#65e5c0"/>')
-        display = '暂无数据' if value is None else f'{value:g}'
-        out.append(f'<text x="{x:.1f}" y="{min(950, 960-height):.1f}" class="muted" font-size="18">{display}</text>')
-        out.append(f'<text x="{x:.1f}" y="1020" class="muted" font-size="18">{esc(item.get("label", ""))}</text>')
+            out.append(f'<rect x="{x:.1f}" y="{980-height:.1f}" width="{bar:.1f}" height="{height:.1f}" rx="8" fill="{color}"/>')
+        display = '—' if value is None else f'{value:g}'
+        label_y = 980 - height - 12 if height else 966
+        out.append(f'<text x="{center:.1f}" y="{label_y:.1f}" class="muted" font-size="18" text-anchor="middle">{display}</text>')
+        out.append(f'<text x="{center:.1f}" y="1020" class="muted" font-size="18" text-anchor="middle">{esc(item.get("label", ""))}</text>')
     lines = wrap_text(data.get('insight', '暂无建议'))
     out.extend(['<rect x="60" y="1080" width="960" height="150" rx="24" fill="#173342"/>',
                 '<text x="90" y="1130" fill="#65e5c0" font-size="22">训练提示</text>',

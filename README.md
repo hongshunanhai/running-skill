@@ -1,5 +1,7 @@
 # 跑步教练 Running Coach
 
+中文 ｜ [English](#english)
+
 把 Garmin 与 RQrun 的跑步记录整理成图表报告，并结合训练和恢复数据给出简短建议。适合希望复盘跑量、比较两端同步记录的跑友。
 
 > **项目状态：开发预览。** 两个 MCP 已分别完成本地协议冒烟测试，报告模板已用模拟数据测试；ChatGPT 中的真实账号、定时任务和通知尚未完成端到端验证。欢迎先试用并反馈，不要依赖它作为唯一训练依据。
@@ -72,3 +74,78 @@ python3 plugins/running-coach/skills/running-coach/scripts/render_report.py plug
 提交问题时请描述平台、操作步骤和报错，先移除账号、位置轨迹、健康数据和凭据。项目的验证步骤和发布前检查见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 本项目采用 [PolyForm Noncommercial License 1.0.0](LICENSE)：个人非商业使用请遵守许可证条款；其他使用方式请先联系版权人取得授权。许可证允许用途以完整条款为准。两个 MCP 的许可证各自独立。
+
+## English
+
+Turn Garmin and RQrun running records into chart-first reports with short, evidence-based training and recovery suggestions — for runners who want to review mileage and compare synced records across both platforms.
+
+> **Status: development preview.** Both MCPs have passed local protocol smoke tests and the report template was tested with simulated data; real accounts, scheduled jobs, and notifications in ChatGPT are not yet verified end-to-end. Try it and share feedback, but do not rely on it as your only training reference.
+
+![Sample weekly report, simulated data](plugins/running-coach/skills/running-coach/examples/sample-report.svg)
+
+### What it can do
+
+- Read workouts from Garmin and RQrun and flag possible duplicates, so the same run is not counted twice.
+- Design chart-first reviews by day, week, month, and year. The skill picks mileage bars, intensity distribution, recovery trends, single-run splits, and platform comparisons based on available data, using ECharts, Plotly, or whatever tools the host provides. The built-in SVG is only a basic fallback; richer charts depend on the runtime environment.
+- Give short, evidence-based suggestions from existing plans, training load, and recovery data, and state limitations when data is missing.
+- Guide you through periodic reports and training reminders on request; actual scheduling, delivery, and notifications depend on your platform's capabilities and permissions.
+
+### Before you start
+
+This project is a skill for the analysis workflow and reporting; data comes from two independent MCPs:
+
+| Source | Project | Purpose |
+| --- | --- | --- |
+| Garmin | [garmin-mcp](https://github.com/hongshunanhai/garmin-mcp) | Training, sleep, recovery data |
+| RQrun | [rqrun-mcp](https://github.com/hongshunanhai/rqrun-mcp) | Workout records, running level, analysis |
+
+On first use the skill checks available tools and guides you through installing or connecting missing data sources. Connecting just one is fine; logins, permissions, and data availability are independent per source. Read each project's install notes and license first: Garmin MCP uses a non-commercial license independent of this project.
+
+### Install & first run
+
+**Codex (local)**
+
+1. Download this repo and copy the full `plugins/running-coach/skills/running-coach` directory to the user-level skill directory `~/.agents/skills/running-coach`, or a project-level `.agents/skills/running-coach`. Keep `references`, `scripts`, and `examples` inside.
+2. Start a new session and type: "Use running-coach to connect Garmin and RQrun and generate this week's running report."
+3. Follow the prompts to check or install the two MCPs, complete login, then review the data sources and reporting period in your first report. Existing MCPs do not need reinstalling.
+
+**ChatGPT**
+
+The repo includes a ChatGPT desktop plugin and marketplace for local testing. These are installation paths pending end-to-end verification, not verified one-click installs:
+
+1. Download or clone this repo and run `codex plugin marketplace add .` in the repo root to add the local marketplace to Codex.
+2. Restart the ChatGPT desktop app, pick the "跑步教练" source in Work's plugin directory, find Running Coach, and install it. Start a local Work session and run the plugin setup or select the skill.
+3. Follow the guide to connect Garmin and RQrun, verify both can read activities in a new conversation, then generate your first weekly report.
+
+This path requires the Codex CLI locally and may be affected by account, version, and workspace permissions. Installing the skill does not install or log in the two MCPs; Codex local MCP config is not the same as a ChatGPT plugin connection. Garmin supports HTTP and RQrun uses local stdio. See the [setup guide](plugins/running-coach/skills/running-coach/references/setup.md) and the [OpenAI plugin packaging docs](https://developers.openai.com/plugins/build/plugins).
+
+### Try saying
+
+```text
+Use my Garmin and RQrun data to make last week's running report, chart-first.
+Compare yesterday's run on both platforms (distance and pace) and explain any differences.
+Given my recent training and recovery, what should I do tomorrow?
+If this platform supports scheduled jobs, send me last week's report every Monday at 8 AM, Asia/Shanghai.
+```
+
+Run one manual report before setting up a schedule. When runs depend on local files, scheduling depends on the host; reports may be incomplete when logins expire or a device has not synced.
+
+### Render the sample chart locally
+
+Requires Python 3, no extra plotting libraries:
+
+```bash
+python3 plugins/running-coach/skills/running-coach/scripts/render_report.py plugins/running-coach/skills/running-coach/examples/sample.json report.svg
+```
+
+`sample.json` and the sample image are simulated data. Real reports require reading and verifying user data first, then filling in the sample structure; the template does not connect to accounts automatically. Do not commit sensitive data to GitHub.
+
+### Privacy & boundaries
+
+Enter passwords only on each platform's official login page; never paste passwords, verification codes, cookies, or tokens into chat. Data is processed by the AI client and model you choose; review report content before sharing. Training suggestions are not medical diagnosis; when unwell or injured, rest first and seek professional help.
+
+### Feedback & verification
+
+When filing issues, describe your platform, steps, and error messages, and remove accounts, GPS traces, health data, and credentials first. Verification steps and pre-release checks are in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+This project is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE): personal non-commercial use must follow the license terms; for other uses contact the copyright holder first. The full terms govern permitted uses. The two MCPs are licensed separately.
