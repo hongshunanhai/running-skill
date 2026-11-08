@@ -6,3 +6,4 @@ __pycache__/
 report.svg
 *.log
 session.json
+reports/
